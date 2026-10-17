@@ -82,6 +82,7 @@ app.post("/api/download", async (req, res) => {
   const args = [
   "--verbose",
   "--js-runtimes", "node",
+  "--extractor-args", "youtube:player_client=tv,web_safari",
   "--no-playlist",
     "--no-part",
     "--max-filesize", "300M",
