@@ -80,8 +80,9 @@ app.post("/api/download", async (req, res) => {
   const output = path.join(DIR, id + ".%(ext)s");
 
   const args = [
-    "--js-runtimes", "node",
-    "--no-playlist",
+  "--verbose",
+  "--js-runtimes", "node",
+  "--no-playlist",
     "--no-part",
     "--max-filesize", "300M",
     "--socket-timeout", "20",
