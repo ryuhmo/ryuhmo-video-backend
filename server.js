@@ -104,7 +104,13 @@ app.post("/api/download", async (req, res) => {
   args.push("--", url);
 
   let finished = false;
-  const child = spawn("yt-dlp", args, { stdio: "ignore" });
+  const child = spawn("yt-dlp", args, {
+  stdio: ["ignore", "ignore", "pipe"]
+});
+
+child.stderr.on("data", chunk => {
+  console.error("yt-dlp error:", chunk.toString());
+});
 
   const timeout = setTimeout(() => {
     if (!finished) child.kill("SIGKILL");
