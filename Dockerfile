@@ -6,7 +6,8 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install --break-system-packages --no-cache-dir -U "yt-dlp[default]"
+RUN pip3 install --break-system-packages --no-cache-dir --pre -U "yt-dlp[default]" \
+ && yt-dlp --version
 
 WORKDIR /app
 COPY package.json ./
